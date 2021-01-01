@@ -20,7 +20,7 @@ class FirebaseAccess:
             "measurementId": "G-Q07G2WEYRV"
         }
         self.firebase = pyrebase.initialize_app(firebaseConfig)
-        cred = credentials.Certificate("/home/developer/autodentistry-app/python/RaspberryPi/smilesymbol-53a69-firebase-adminsdk-pezxe-a81003685e.json")
+        cred = credentials.Certificate("smilesymbol-53a69-firebase-adminsdk-pezxe-a81003685e.json")
         self.default_app = firebase_admin.initialize_app(cred)
         global ref
         ref = db.reference("smilesymbol-53a69-default-rtdb", url="https://smilesymbol-53a69-default-rtdb.firebaseio.com/")
@@ -51,7 +51,7 @@ class FirebaseAccess:
                 currentname = ref.child(Serialnumber).child(Userid).child('photos').child(photo).child('Imagename').get()
                 uploadtest.uploadGDrive(currentname, Serialnumber, Userid, FolderId, Drive)
                 ref.child(Serialnumber).child(Userid).child('photos').child(photo).update({'Upload_Flag': 'true'})
-                os.remove(os.path.join('/home/developer/autodentistry-app/python/RaspberryPi/images', currentname))
+                os.remove(os.path.join('camera_test', currentname))
             else:
                 print('Image is Uploaded')
 

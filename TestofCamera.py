@@ -4,8 +4,8 @@ from distutils.dir_util import copy_tree
 
 base = firebase_access.FirebaseAccess()
 def Camera(Serial_number, UserId):
-    path1 = r"/home/developer/autodentistry-app/python/RaspberryPi/Cameratest"
-    path2 = r"/home/developer/autodentistry-app/python/RaspberryPi/images"
+    path1 = r"camera_test"
+    path2 = r"camera_test"
     for X in os.listdir(path1):
         Image_address = os.path.join(path2, X)
         copy_tree(path1, path2)

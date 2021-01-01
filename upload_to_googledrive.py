@@ -16,7 +16,7 @@ def CreateFolder():
     return FId
 
 def Uploadimages():
-    entry = os.scandir('/home/developer/autodentistry-app/python/RaspberryPi/images')
+    entry = os.scandir('camera_test')
     DirectoryAddress = CreateFolder()
     counter = 0
     for X in entry:
