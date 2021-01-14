@@ -25,9 +25,12 @@ class FirebaseAccess:
         global ref
         ref = db.reference("smilesymbol-53a69-default-rtdb", url="https://smilesymbol-53a69-default-rtdb.firebaseio.com/")
 
+    def CheckcameraFlag(Serial_number):
+        return ref.child(Serial_number).child('CameraTurnOnflag').get()
+
 
     def set_database(self, imagename, Image_Address, Serial_number, UserId):
-       self.firebase.auth()
+       # self.firebase.auth()
        ref.child(Serial_number).child(UserId).child('photos').push({
                                                     'Imagename' : imagename,
                                                     'Upload_Flag': 'false',
@@ -51,7 +54,7 @@ class FirebaseAccess:
                 currentname = ref.child(Serialnumber).child(Userid).child('photos').child(photo).child('Imagename').get()
                 uploadtest.uploadGDrive(currentname, Serialnumber, Userid, FolderId, Drive)
                 ref.child(Serialnumber).child(Userid).child('photos').child(photo).update({'Upload_Flag': 'true'})
-                os.remove(os.path.join('/home/developer/autodentistry-app/python/RaspberryPi/images', currentname))
+                os.remove(os.path.join('/home/pi/images', currentname))
             else:
                 print('Image is Uploaded')
 
@@ -60,6 +63,3 @@ class FirebaseAccess:
         for item in ref.child(serialnumber).child(UserId).child('photos').get():
             if ref.child(serialnumber).child(UserId).child('photos').child(item).child('Imagename').get() == Imagename:
                 return item
-
-
-

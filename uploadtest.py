@@ -21,7 +21,7 @@ def CreateFolder(drive):
 def uploadGDrive(Imagename, Serialnumber, UserId, folderId, drive):
 
 
-    path = r"/home/developer/autodentistry-app/python/RaspberryPi/images"
+    path = r"/home/pi/images"
     for x in os.listdir(path):
         if x == Imagename :
             folder_metadata = {
